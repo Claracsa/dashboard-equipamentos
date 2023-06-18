@@ -1,0 +1,23 @@
+{
+  "name": "dash",
+  "version": "1.0.0",
+  "description": "dashboard de equipamentos em manutencao",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Claracsa/dashboard-equipamentos.git"
+  },
+  "author": "Claracsa1",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Claracsa/dashboard-equipamentos/issues"
+  },
+  "homepage": "https://github.com/Claracsa/dashboard-equipamentos#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
+  }
+}
