@@ -1,0 +1,51 @@
+<%- include ('./partials/header.ejs') %>
+<body>
+  <%- include ('./partials/navbar.ejs') %>
+  <div class="container">
+    <div class="card" id="formulario-entrada">
+      <div class="card-hearder">
+        <h3>Entrada</h3>
+      </div>
+      <div class="card-body">
+        <form>
+          <label>Técnico</label>
+          <input
+            type="text"
+            placeholder="Nome do técnico"
+            class="form-control"
+          />
+
+          <label>Solicitante</label>
+          <input
+            type="text"
+            placeholder="Nome do solicitante"
+            class="form-control"
+          />
+
+          <label>Setor</label>
+          <input
+            type="text"
+            placeholder="Setor do equipamento"
+            class="form-control"
+          />
+
+          <label>GATI</label>
+          <input
+            type="text"
+            placeholder="GATI do equipamento"
+            class="form-control"
+          />
+
+          <label>Técnico</label>
+          <input type="text" placeholder="Título" class="form-control" />
+
+          <label>Observações</label>
+          <textarea placeholder="Observações..." class="form-control"></textarea
+          ><br />
+          <button class="btn btn-info">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<%- include ('./partials/footer.ejs') %>
