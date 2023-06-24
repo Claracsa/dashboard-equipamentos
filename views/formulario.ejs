@@ -1,19 +1,33 @@
+<!--caminho para achar o partials -->
 <%- include('partials/hearder.ejs') %>
 <body>
+  <!--caminho para achar o partials -->
   <%- include('partials/navbar.ejs') %>
+  <!--Titulo e inicio do formulario de entrada-->
   <div class="container">
     <div class="card" id="formulario-entrada">
       <div class="card-hearder">
         <h3>Entrada</h3>
       </div>
       <div class="card-body">
-        <form>
+        <!--Inicio do formulario-->
+        <form method="post" action="/salvarformulario">
           <label>Técnico</label>
-          <input
-            type="text"
-            placeholder="Nome do técnico"
-            class="form-control"
-          />
+          <div class="dropdown">
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              id="tecnicos"
+              data-toggle="dropdown"
+            >
+              Selecione
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">Luiz</a>
+              </li>
+            </ul>
+          </div>
 
           <label>Solicitante</label>
           <input
@@ -23,11 +37,21 @@
           />
 
           <label>Setor</label>
-          <input
-            type="text"
-            placeholder="Setor do equipamento"
-            class="form-control"
-          />
+          <div class="dropdown">
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              id="setores"
+              data-toggle="dropdown"
+            >
+              Selecione
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">TI</a>
+              </li>
+            </ul>
+          </div>
 
           <label>GATI</label>
           <input
@@ -36,17 +60,65 @@
             class="form-control"
           />
 
-          <label>Técnico</label>
-          <input type="text" placeholder="Título" class="form-control" />
+          <label>Fornecedor</label>
+          <div class="dropdown">
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              id="fornecedor"
+              data-toggle="dropdown"
+            >
+              Selecione
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">HEGV</a>
+              </li>
+            </ul>
+          </div>
+
+          <label>Data/Hora</label>
+          <input class="datepicker" type="date" />
+          <input type="time" />
+
+          <label>Data/Hora Atual</label>
+
+          <label>Problema</label>
+          <div class="dropdown">
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              id="fornecedor"
+              data-toggle="dropdown"
+            >
+              Selecione
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">CPU</a>
+              </li>
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">NoBreak</a>
+              </li>
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">Monitor</a>
+              </li>
+              <li role="presentation">
+                <a role="menuitem" tabindex="-1" href="#">Impressora</a>
+              </li>
+            </ul>
+          </div>
 
           <label>Observações</label>
           <textarea placeholder="Observações..." class="form-control"></textarea
           ><br />
+          <!--Botao para enviar formulario-->
           <button class="btn btn-info">Enviar</button>
+          <!--Fim do formulario-->
         </form>
       </div>
     </div>
   </div>
 </body>
+<!--caminho para achar o partials -->
 <%- include('partials/footer.ejs') %>
-
