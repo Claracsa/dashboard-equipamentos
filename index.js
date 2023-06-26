@@ -62,7 +62,9 @@ app.get('/equipamento/:id', (req, res) => {
   }).then(formulario => {
     if (formulario != undefined) {
       //Equipamento encontrado
-      res.render('equipamento');
+      res.render('equipamento', {
+        formulario: formulario,
+      });
     } else {
       //Equipamento nao encontrado
       res.redirect('/');

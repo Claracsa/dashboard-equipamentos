@@ -1,1 +1,13 @@
-<h1>funcionou</h1>
+<%- include('partials/hearder.ejs') %>
+<body>
+  <%- include('partials/navbar.ejs') %>
+
+  <div class="container">
+    <hr />
+    <h1><%= formulario.solicitante %></h1>
+    <p><%= formulario.gati %></p>
+    <hr />
+  </div>
+</body>
+
+<%- include('partials/footer.ejs') %>
