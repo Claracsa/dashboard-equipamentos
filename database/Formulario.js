@@ -7,9 +7,11 @@ const Formulario = connection.define('formulario', {
     allowNull: false,
   },
   gati: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false,
   },
 });
 
 Formulario.sync({ force: false }).then(() => {});
+
+module.exports = Formulario;

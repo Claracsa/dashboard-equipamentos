@@ -1,7 +1,25 @@
 <%- include('partials/hearder.ejs') %>
 <body>
   <%- include('partials/navbar.ejs') %>
-  <h1>Estilo da máquina</h1>
+
+  <div class="container">
+    <hr />
+    <h1>Equipamentos em Bancada</h1>
+    <hr />
+    <a href="/formulario" class="btn btn-primary">Nova Entrada</a>
+    <% formulario.forEach(formulario => { %>
+    <br />
+    <div class="card">
+      <div class="card-body">
+        <p><%= formulario.solicitante%></p>
+      </div>
+
+      <div class="card-footer">
+        <button class="btn btn-primary">Responder</button>
+      </div>
+    </div>
+    <% }) %>
+  </div>
 </body>
 
 <%- include('partials/footer.ejs') %>

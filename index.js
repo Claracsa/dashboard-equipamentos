@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const connection = require('./database/database');
-const formularioModel = require('./database/Formulario');
+const Formulario = require('./database/Formulario');
+const { raw } = require('body-parser');
 
 //Database
 connection
@@ -25,7 +26,17 @@ app.use(bodyParser.json());
 
 //Caminho para a pagina da lista de equipamentos
 app.get('/', (req, res) => {
-  res.render('index', {});
+  //SLECT * ALL FROM formulario
+  Formulario.findAll({
+    raw: true,
+    order: [
+      ['id', 'DESC'], //ASC = Crescente || DESC = Decrescente
+    ],
+  }).then(formulario => {
+    res.render('index', {
+      formulario: formulario,
+    });
+  });
 });
 
 //Caminho para a pagina do formulario de entrada de equipamentos
@@ -36,9 +47,27 @@ app.get('/formulario', (req, res) => {
 app.post('/salvarformulario', (req, res) => {
   var solicitante = req.body.solicitante;
   var gati = req.body.gati;
-  res.send(
-    'Formulário recebido! Solicitante' + solicitante + ' ' + 'GATI' + gati
-  );
+  Formulario.create({
+    solicitante: solicitante,
+    gati: gati,
+  }).then(() => {
+    res.redirect('/');
+  });
+});
+
+app.get('/equipamento/:id', (req, res) => {
+  var id = req.params.id;
+  Formulario.findOne({
+    where: { id: id },
+  }).then(formulario => {
+    if (formulario != undefined) {
+      //Equipamento encontrado
+      res.render('equipamento');
+    } else {
+      //Equipamento nao encontrado
+      res.redirect('/');
+    }
+  });
 });
 
 //Acesso ao servidor
