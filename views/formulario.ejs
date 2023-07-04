@@ -7,70 +7,66 @@
   <div class="container">
     <div class="card" id="formulario-entrada">
       <div class="card-hearder">
-        <h3>Entrada</h3>
+        <h3 style="margin: 20px">Formulário de Entrada</h3>
       </div>
       <div class="card-body">
         <!--Inicio do formulario-->
+
         <form method="post" action="/salvarformulario">
-          <!-- <label>Título</label>
+          <label style="margin-left: 30px">Número do Chamado</label>
+          <input
+            type="text"
+            placeholder="ID"
+            class="form-control"
+            name="numChamado"
+            style="width: 150px"
+          />
+
+          <label style="margin-left: 30px">Hora do Chamado</label>
+          <input
+            type="text"
+            placeholder="Hora do chamado"
+            class="form-control"
+            name="numChamado"
+            style="width: 150px"
+          />
+
+          <label style="margin-left: 50px">Solicitante</label>
           <input
             type="text"
             placeholder="Nome do solicitante"
             class="form-control"
             name="solicitante"
+            style="width: 500px"
           />
 
-          <label>Observações</label>
-          <textarea
-            placeholder="Observações..."
-            class="form-control"
-            name="obs"
-          ></textarea
-          ><br /> -->
-
-          <label>Técnico</label>
-          <div class="dropdown">
-            <button
-              class="btn btn-default dropdown-toggle"
-              type="button"
-              id="tecnicos"
-              data-toggle="dropdown"
-            >
-              Selecione
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">Luiz</a>
-              </li>
-            </ul>
-          </div>
-
-          <label>Solicitante</label>
+          <label style="margin-left: 30px">Técnico Atribuído</label>
           <input
             type="text"
-            placeholder="Nome do solicitante"
+            placeholder="Técnico atribuído"
             class="form-control"
-            name="solicitante"
+            name="tecAtribuido"
+            style="width: 500px"
+          />
+          <label style="margin-left: 30px">Técnico 2</label>
+          <input
+            type="text"
+            placeholder="Técnico 2"
+            class="form-control"
+            name="tec2"
+            style="width: 500px"
           />
 
-          <label>Setor</label>
-          <div class="dropdown">
-            <button
-              class="btn btn-default dropdown-toggle"
-              type="button"
-              id="setores"
-              data-toggle="dropdown"
-            >
-              Selecione
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">TI</a>
-              </li>
-            </ul>
-          </div>
+          <label style="margin-left: 30px">Localização</label>
+          <input
+            type="text"
+            placeholder="Setor"
+            class="form-control"
+            name="setor"
+            style="width: 500px"
+          />
 
-          <label>GATI</label>
+          <label style="margin-left: 30px">GATI</label>
           <input
             type="text"
             placeholder="GATI do equipamento"
@@ -78,7 +74,7 @@
             name="gati"
           />
 
-          <label>Fornecedor</label>
+          <label style="margin-left: 30px">Fornecedor</label>
           <div class="dropdown">
             <button
               class="btn btn-default dropdown-toggle"
@@ -95,13 +91,14 @@
             </ul>
           </div>
 
-          <label>Data/Hora</label>
+          <%# <label style="margin-left: 30px">Data/Hora</label>
           <input class="datepicker" type="date" />
           <input type="time" />
+          %>
 
-          <label>Data/Hora Atual</label>
+          <label style="margin-left: 30px">Data/Hora Atual</label>
 
-          <label>Problema</label>
+          <label style="margin-left: 30px">Problema</label>
           <div class="dropdown">
             <button
               class="btn btn-default dropdown-toggle"
@@ -116,10 +113,10 @@
                 <a role="menuitem" tabindex="-1" href="#">CPU</a>
               </li>
               <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">NoBreak</a>
+                <a role="menuitem" tabindex="-1" href="#">Monitor</a>
               </li>
               <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">Monitor</a>
+                <a role="menuitem" tabindex="-1" href="#">Nobreak</a>
               </li>
               <li role="presentation">
                 <a role="menuitem" tabindex="-1" href="#">Impressora</a>
@@ -127,7 +124,12 @@
             </ul>
           </div>
 
-          <label>Observações</label>
+          <%# <% if(imgs.length > 0){ %> <% imgs.forEach(function(img) { %>
+          <img src="uploads/<%=user.username%>/screenshots/<%= img %>" />
+          <% }); %> <% } else{ %>
+          <p>no photos uploaded</p>
+          <% } %> %>
+          <label style="margin-left: 30px">Observações</label>
           <textarea placeholder="Observações..." class="form-control"></textarea
           ><br />
           <!--Botao para enviar formulario-->
