@@ -41,7 +41,16 @@ app.get('/', (req, res) => {
 
 //Caminho para a pagina do formulario de entrada de equipamentos
 app.get('/formulario', (req, res) => {
-  res.render('formulario');
+  res.render('formulario', { data: null, hora: null });
+});
+
+// Rota para buscar a data e hora atual
+app.get('/data-hora', (req, res) => {
+  const dataHoraAtual = new Date();
+  const data = dataHoraAtual.toLocaleDateString();
+  const hora = dataHoraAtual.toLocaleTimeString();
+
+  res.render('formulario', { data, hora });
 });
 
 app.post('/salvarformulario', (req, res) => {

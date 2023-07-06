@@ -91,47 +91,33 @@
             </ul>
           </div>
 
-          <%# <label style="margin-left: 30px">Data/Hora</label>
-          <input class="datepicker" type="date" />
-          <input type="time" />
-          %>
+          <button onclick="buscarDataHora()" class="btn btn-info">
+            Data e Hora Atual
+          </button>
+          <p id="dataHora"><%= data %> <%= hora %></p>
 
-          <label style="margin-left: 30px">Data/Hora Atual</label>
+          <script>
+            function buscarDataHora() {
+              fetch('/data-hora')
+                .then(response => response.text())
+                .then(html => {
+                  const parser = new DOMParser();
+                  const newDoc = parser.parseFromString(html, 'text/html');
+                  const newDataHora =
+                    newDoc.getElementById('dataHora').innerHTML;
+                  document.getElementById('dataHora').innerHTML = newDataHora;
+                })
+                .catch(error => console.log(error));
+            }
+          </script>
 
-          <label style="margin-left: 30px">Problema</label>
-          <div class="dropdown">
-            <button
-              class="btn btn-default dropdown-toggle"
-              type="button"
-              id="fornecedor"
-              data-toggle="dropdown"
-            >
-              Selecione
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">CPU</a>
-              </li>
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">Monitor</a>
-              </li>
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">Nobreak</a>
-              </li>
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">Impressora</a>
-              </li>
-            </ul>
-          </div>
-
-          <%# <% if(imgs.length > 0){ %> <% imgs.forEach(function(img) { %>
-          <img src="uploads/<%=user.username%>/screenshots/<%= img %>" />
-          <% }); %> <% } else{ %>
-          <p>no photos uploaded</p>
-          <% } %> %>
           <label style="margin-left: 30px">Observações</label>
-          <textarea placeholder="Observações..." class="form-control"></textarea
-          ><br />
+          <input
+            type="text"
+            placeholder="Observação..."
+            class="form-control"
+            name="observacao"
+          />
           <!--Botao para enviar formulario-->
           <button class="btn btn-info">Enviar</button>
           <!--Fim do formulario-->
