@@ -111,6 +111,136 @@
             }
           </script>
 
+          <div class="col-3">
+            <select
+              class="form-select"
+              aria-label="Equipamento"
+              name="equipamento"
+              onchange="mostrarSegundaLista(this)"
+            >
+              <option selected disabled>Equipamento</option>
+              <option value="1">CPU</option>
+              <option value="2">Nobreak</option>
+              <option value="3">Monitor</option>
+              <option value="4">Impressora</option>
+            </select>
+          </div>
+
+          <div id="segundaLista" style="display: none">
+            <div class="col-3">
+              <select
+                class="form-select"
+                aria-label="Segunda lista"
+                name="segundaLista"
+                onchange="mostrarTerceiraLista(this)"
+              >
+                <option selected disabled>Segunda Lista</option>
+                <!-- Opções para a primeira opção da primeira lista -->
+                <option value="1.1">Opção 1.1</option>
+                <option value="1.2">Opção 1.2</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="terceiraLista" style="display: none">
+            <div class="col-3">
+              <select
+                class="form-select"
+                aria-label="Terceira lista"
+                name="terceiraLista"
+              >
+                <option selected disabled>Terceira Lista</option>
+                <!-- Opções para a primeira opção da segunda lista -->
+                <option value="1.1.1">Opção 1.1.1</option>
+                <option value="1.1.2">Opção 1.1.2</option>
+                <!-- Opções para a segunda opção da segunda lista -->
+                <option value="1.2.1">Opção 1.2.1</option>
+                <option value="1.2.2">Opção 1.2.2</option>
+              </select>
+            </div>
+          </div>
+
+          <script>
+            function mostrarSegundaLista(selectElement) {
+              var segundaLista = document.getElementById('segundaLista');
+              var segundaListaSelect = segundaLista.querySelector('select');
+
+              // Limpa a segunda lista suspensa
+              segundaListaSelect.innerHTML =
+                '<option selected disabled>Segunda Lista</option>';
+
+              // Obtém o valor selecionado na primeira lista
+              var equipamentoSelecionado = selectElement.value;
+
+              if (equipamentoSelecionado === '1') {
+                // Opções para a primeira opção da primeira lista
+                segundaListaSelect.innerHTML +=
+                  '<option value="1.1">Opção 1.1</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="1.2">Opção 1.2</option>';
+              } else if (equipamentoSelecionado === '2') {
+                // Opções para a segunda opção da primeira lista
+                segundaListaSelect.innerHTML +=
+                  '<option value="2.1">Opção 2.1</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="2.2">Opção 2.2</option>';
+              } else if (equipamentoSelecionado === '3') {
+                // Opções para a terceira opção da primeira lista
+                segundaListaSelect.innerHTML +=
+                  '<option value="3.1">Opção 3.1</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="3.2">Opção 3.2</option>';
+              } else if (equipamentoSelecionado === '4') {
+                // Opções para a quarta opção da primeira lista
+                segundaListaSelect.innerHTML +=
+                  '<option value="4.1">Opção 4.1</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="4.2">Opção 4.2</option>';
+              }
+
+              // Exibe a segunda lista suspensa
+              segundaLista.style.display = 'block';
+
+              // Oculta a terceira lista suspensa
+              document.getElementById('terceiraLista').style.display = 'none';
+            }
+
+            function mostrarTerceiraLista(selectElement) {
+              var terceiraLista = document.getElementById('terceiraLista');
+              var terceiraListaSelect = terceiraLista.querySelector('select');
+
+              // Limpa a terceira lista suspensa
+              terceiraListaSelect.innerHTML =
+                '<option selected disabled>Terceira Lista</option>';
+
+              // Obtém o valor selecionado na segunda lista
+              var segundaListaSelecionada = selectElement.value;
+
+              if (segundaListaSelecionada === '1.1') {
+                // Opções para a primeira opção da segunda lista
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.1.1">Opção 1.1.1</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.1.2">Opção 1.1.2</option>';
+
+                // Exibe a terceira lista suspensa
+                terceiraLista.style.display = 'block';
+              } else if (segundaListaSelecionada === '1.2') {
+                // Opções para a segunda opção da segunda lista
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.2.1">Opção 1.2.1</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.2.2">Opção 1.2.2</option>';
+
+                // Exibe a terceira lista suspensa
+                terceiraLista.style.display = 'block';
+              } else {
+                // Oculta a terceira lista suspensa se uma opção diferente de 1.1 ou 1.2 for selecionada
+                terceiraLista.style.display = 'none';
+              }
+            }
+          </script>
+
           <label style="margin-left: 30px">Observações</label>
           <input
             type="text"
