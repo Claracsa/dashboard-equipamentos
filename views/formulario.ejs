@@ -7,13 +7,14 @@
   <div class="container">
     <div class="card" id="formulario-entrada">
       <div class="card-hearder">
-        <h3 style="margin: 20px">Formulário de Entrada</h3>
+        <h2 style="margin: 20px">Formulário de Entrada</h2>
       </div>
       <div class="card-body">
         <!--Inicio do formulario-->
 
+        yyh
         <form method="post" action="/salvarformulario">
-          <label style="margin-left: 30px">Número do Chamado</label>
+          <label>Número do Chamado</label>
           <input
             type="text"
             placeholder="ID"
@@ -22,7 +23,7 @@
             style="width: 150px"
           />
 
-          <label style="margin-left: 30px">Hora do Chamado</label>
+          <label>Hora do Chamado</label>
           <input
             type="text"
             placeholder="Hora do chamado"
@@ -31,7 +32,7 @@
             style="width: 150px"
           />
 
-          <label style="margin-left: 50px">Solicitante</label>
+          <label>Solicitante</label>
           <input
             type="text"
             placeholder="Nome do solicitante"
@@ -40,7 +41,7 @@
             style="width: 500px"
           />
 
-          <label style="margin-left: 30px">Técnico Atribuído</label>
+          <label>Técnico Atribuído</label>
           <input
             type="text"
             placeholder="Técnico atribuído"
@@ -48,7 +49,7 @@
             name="tecAtribuido"
             style="width: 500px"
           />
-          <label style="margin-left: 30px">Técnico 2</label>
+          <label>Técnico 2</label>
           <input
             type="text"
             placeholder="Técnico 2"
@@ -57,7 +58,7 @@
             style="width: 500px"
           />
 
-          <label style="margin-left: 30px">Localização</label>
+          <label>Localização</label>
           <input
             type="text"
             placeholder="Setor"
@@ -66,7 +67,7 @@
             style="width: 500px"
           />
 
-          <label style="margin-left: 30px">GATI</label>
+          <label>GATI</label>
           <input
             type="text"
             placeholder="GATI do equipamento"
@@ -74,21 +75,18 @@
             name="gati"
           />
 
-          <label style="margin-left: 30px">Fornecedor</label>
-          <div class="dropdown">
-            <button
-              class="btn btn-default dropdown-toggle"
-              type="button"
-              id="fornecedor"
-              data-toggle="dropdown"
+          <label>Fornecedor</label>
+          <div class="col-3">
+            <select
+              class="btn btn-info dropdown-toggle"
+              aria-label="Fornecedor"
+              name="equipamento"
             >
-              Selecione
-            </button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation">
-                <a role="menuitem" tabindex="-1" href="#">HEGV</a>
-              </li>
-            </ul>
+              <option selected disabled>Selecione</option>
+              <option value="1">HEGV</option>
+              <option value="2">Locado</option>
+              <option value="3">Terceirizado</option>
+            </select>
           </div>
 
           <button onclick="buscarDataHora()" class="btn btn-info">
@@ -111,14 +109,15 @@
             }
           </script>
 
+          <label style="margin-left: 30px">Equipamento</label>
           <div class="col-3">
             <select
-              class="form-select"
+              class="btn btn-info dropdown-toggle"
               aria-label="Equipamento"
               name="equipamento"
               onchange="mostrarSegundaLista(this)"
             >
-              <option selected disabled>Equipamento</option>
+              <option selected disabled>Selecione</option>
               <option value="1">CPU</option>
               <option value="2">Nobreak</option>
               <option value="3">Monitor</option>
@@ -129,12 +128,12 @@
           <div id="segundaLista" style="display: none">
             <div class="col-3">
               <select
-                class="form-select"
-                aria-label="Segunda lista"
+                class="btn btn-info dropdown-toggle"
+                aria-label="Problema"
                 name="segundaLista"
                 onchange="mostrarTerceiraLista(this)"
               >
-                <option selected disabled>Segunda Lista</option>
+                <option selected disabled>Problema</option>
                 <!-- Opções para a primeira opção da primeira lista -->
                 <option value="1.1">Opção 1.1</option>
                 <option value="1.2">Opção 1.2</option>
@@ -145,11 +144,11 @@
           <div id="terceiraLista" style="display: none">
             <div class="col-3">
               <select
-                class="form-select"
-                aria-label="Terceira lista"
+                class="btn btn-info dropdown-toggle"
+                aria-label="Problema"
                 name="terceiraLista"
               >
-                <option selected disabled>Terceira Lista</option>
+                <option selected disabled>Problema</option>
                 <!-- Opções para a primeira opção da segunda lista -->
                 <option value="1.1.1">Opção 1.1.1</option>
                 <option value="1.1.2">Opção 1.1.2</option>
@@ -175,27 +174,37 @@
               if (equipamentoSelecionado === '1') {
                 // Opções para a primeira opção da primeira lista
                 segundaListaSelect.innerHTML +=
-                  '<option value="1.1">Opção 1.1</option>';
+                  '<option value="1.1">Hardware</option>';
                 segundaListaSelect.innerHTML +=
-                  '<option value="1.2">Opção 1.2</option>';
+                  '<option value="1.2">Software</option>';
               } else if (equipamentoSelecionado === '2') {
                 // Opções para a segunda opção da primeira lista
                 segundaListaSelect.innerHTML +=
-                  '<option value="2.1">Opção 2.1</option>';
+                  '<option value="2.1">Fusível</option>';
                 segundaListaSelect.innerHTML +=
-                  '<option value="2.2">Opção 2.2</option>';
+                  '<option value="2.2">Nobreak não liga</option>';
               } else if (equipamentoSelecionado === '3') {
                 // Opções para a terceira opção da primeira lista
                 segundaListaSelect.innerHTML +=
-                  '<option value="3.1">Opção 3.1</option>';
+                  '<option value="3.1">Fonte</option>';
                 segundaListaSelect.innerHTML +=
-                  '<option value="3.2">Opção 3.2</option>';
+                  '<option value="3.2">Sem vídeo</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="3.3">Cabo VGA</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="3.4">Cabo de Força</option>';
               } else if (equipamentoSelecionado === '4') {
                 // Opções para a quarta opção da primeira lista
                 segundaListaSelect.innerHTML +=
-                  '<option value="4.1">Opção 4.1</option>';
+                  '<option value="4.1">Cilindro</option>';
                 segundaListaSelect.innerHTML +=
-                  '<option value="4.2">Opção 4.2</option>';
+                  '<option value="4.2">Fusor</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="4.1">Rolete</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="4.1">Cabo de Força</option>';
+                segundaListaSelect.innerHTML +=
+                  '<option value="4.1">Não liga</option>';
               }
 
               // Exibe a segunda lista suspensa
@@ -219,18 +228,28 @@
               if (segundaListaSelecionada === '1.1') {
                 // Opções para a primeira opção da segunda lista
                 terceiraListaSelect.innerHTML +=
-                  '<option value="1.1.1">Opção 1.1.1</option>';
+                  '<option value="1.1.1">Placa Mãe</option>';
                 terceiraListaSelect.innerHTML +=
-                  '<option value="1.1.2">Opção 1.1.2</option>';
+                  '<option value="1.1.2">Processador</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.1.3">Memória</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.1.4">Fonte</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.1.5">HD</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.1.6">Limpeza Completa</option>';
 
                 // Exibe a terceira lista suspensa
                 terceiraLista.style.display = 'block';
               } else if (segundaListaSelecionada === '1.2') {
                 // Opções para a segunda opção da segunda lista
                 terceiraListaSelect.innerHTML +=
-                  '<option value="1.2.1">Opção 1.2.1</option>';
+                  '<option value="1.2.1">Formatação</option>';
                 terceiraListaSelect.innerHTML +=
-                  '<option value="1.2.2">Opção 1.2.2</option>';
+                  '<option value="1.2.2">Instalação de Programa</option>';
+                terceiraListaSelect.innerHTML +=
+                  '<option value="1.2.1">Backup</option>';
 
                 // Exibe a terceira lista suspensa
                 terceiraLista.style.display = 'block';
